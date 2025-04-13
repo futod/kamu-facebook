@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="left">
+      <h1 class="logo">facebook</h1>
+      <p class="subtitle">Legutóbbi bejelentkezések</p>
+      <p class="instruction">Kattints a képedre vagy adj hozzá fiókot.</p>
+      <div class="profiles">
+        <div class="profile-card add">
+          <div class="plus">+</div>
+          <p>Fiók hozzáadása</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="right">
+      <form (ngSubmit)="login()">
+        <input type="text" placeholder="E-mail cím vagy telefonszám" [(ngModel)]="email" name="email" required />
+        <input type="password" placeholder="Jelszó" [(ngModel)]="password" name="password" required />
+        <button mat-button type="submit" [disabled]="isLoading" (click)="onLogin(email, password)">
+          <ng-container *ngIf="!isLoading">Bejelentkezés</ng-container>
+          <mat-progress-spinner *ngIf="isLoading" diameter="24" mode="indeterminate" color="primary"></mat-progress-spinner>
+        </button>
+        <a class="forgot" href="#">Elfelejtetted a jelszavad?</a>
+        <hr />
+       
+        <a href="/register" class="create"><button mat-button type="button" class="create">Új fiók létrehozása</button></a>
+
+      </form>
+    </div>
+  </div>
+  

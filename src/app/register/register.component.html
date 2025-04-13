@@ -1,0 +1,41 @@
+<div class="form-container">
+  <h1>facebook</h1>
+  <h2>Hozz létre egy fiókot</h2>
+
+  <form [formGroup]="regisztraciosUrlap" (ngSubmit)="kuldes()">
+    <div class="row">
+      <input type="text" placeholder="Keresztnév" formControlName="keresztnev" />
+      <input type="text" placeholder="Vezetéknév" formControlName="vezeteknev" />
+    </div>
+
+    <div class="row">
+      <select formControlName="nap">
+        <option value="" disabled selected>Nap</option>
+        <option *ngFor="let n of napok" [value]="n">{{ n }}</option>
+      </select>
+
+      <select formControlName="honap">
+        <option value="" disabled selected>Hónap</option>
+        <option *ngFor="let h of honapok; let i = index" [value]="i + 1">{{ h }}</option>
+      </select>
+
+      <select formControlName="ev">
+        <option value="" disabled selected>Év</option>
+        <option *ngFor="let e of evek" [value]="e">{{ e }}</option>
+      </select>
+    </div>
+
+    <div class="row gender">
+      <label><input type="radio" value="Nő" formControlName="nem" /> Nő</label>
+      <label><input type="radio" value="Férfi" formControlName="nem" /> Férfi</label>
+      <label><input type="radio" value="Egyedi" formControlName="nem" /> Egyedi</label>
+    </div>
+
+    <input type="email" placeholder="E-mail cím vagy telefonszám" formControlName="email" />
+    <input type="password" placeholder="Új jelszó" formControlName="jelszo" />
+
+    <button type="submit" [disabled]="!regisztraciosUrlap.valid">Regisztráció</button>
+  </form>
+
+  <p class="belepes-link" (click)="visszaALepeoldalra()">Már van fiókod?</p>
+</div>

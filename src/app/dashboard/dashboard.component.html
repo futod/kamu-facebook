@@ -1,0 +1,29 @@
+<div class="dashboard">
+  <header class="header">
+    <div class="logo">Kamu Facebook</div>
+
+    <div class="profil-container" (click)="toggleMenu()">
+      <!-- ÜZENETEK BADGE -->
+      <span
+        matBadge="{{ uzenetekSzama }}"
+        matBadgeColor="warn"
+        matBadgePosition="above before"
+        class="badge-icon"
+      >
+        <mat-icon>mail</mat-icon>
+      </span>
+
+      <!-- PROFILKÉP -->
+      <img [src]="profilKep" alt="Profilkép" class="profilkep" [class.zoom]="menuNyitva" />
+
+      <div class="menu" *ngIf="menuNyitva">
+        <p>{{ felhasznaloNev }}</p>
+        <button (click)="kijelentkezes()">Kijelentkezés</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <h1>Üdvözöllek a kamu Facebookon, {{ keresztNev }}!</h1>
+  </main>
+</div>
